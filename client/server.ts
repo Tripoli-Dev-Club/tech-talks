@@ -11,24 +11,10 @@ Bun.serve({
             <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <link rel="stylesheet" href="styles.css" />
               <title>Document</title>
             </head>
-            <body
-              style="
-                background-color: black;
-                width: 100vw;
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                box-sizing: border-box;
-                padding: 0px;
-                margin: 0px;
-                color: white;
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 5rem;
-              "
-            >
+            <body>
               <button onclick="onClick()">generate</button>
               <script src="client.js"></script>
             </body>
@@ -66,6 +52,20 @@ Bun.serve({
       return new Response(JSON.stringify({ catNames }), {
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        },
+      });
+    }
+
+    if (req.url.endsWith('/styles.css')) {
+      const file = Bun.file('./styles.css');
+
+      const text = await file.text();
+
+      return new Response(text, {
+        headers: {
+          'Content-Type': 'text/css',
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         },
