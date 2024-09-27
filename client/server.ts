@@ -3,38 +3,36 @@
 Bun.serve({
   port: 3000,
   async fetch(req) {
-    console.log(req.url);
     if (req.url.endsWith('/')) {
       return new Response(
         `
         <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body
-    style="
-      background-color: black;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      padding: 0px;
-      margin: 0px;
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 5rem;
-    "
-  >
-    <button onclick="onClick()">generate</button>
-    <script src="client.js"></script>
-  </body>
-</html>
-
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Document</title>
+            </head>
+            <body
+              style="
+                background-color: black;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                padding: 0px;
+                margin: 0px;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 5rem;
+              "
+            >
+              <button onclick="onClick()">generate</button>
+              <script src="client.js"></script>
+            </body>
+          </html>
 `,
         {
           headers: {
