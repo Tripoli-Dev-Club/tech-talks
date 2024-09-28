@@ -23,8 +23,6 @@ Bun.serve({
         {
           headers: {
             'Content-Type': 'text/html',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
           },
         }
       );
@@ -37,8 +35,6 @@ Bun.serve({
       return new Response(text, {
         headers: {
           'Content-Type': 'application/javascript',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         },
       });
     }
@@ -52,8 +48,6 @@ Bun.serve({
       return new Response(JSON.stringify({ catNames }), {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         },
       });
     }
@@ -66,8 +60,6 @@ Bun.serve({
       return new Response(text, {
         headers: {
           'Content-Type': 'text/css',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         },
       });
     }
