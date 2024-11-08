@@ -4,6 +4,12 @@ Bun.serve({
   port: 3000,
   async fetch(req) {
     if (req.url.endsWith('/')) {
+      const file = Bun.file('./cat-names.txt');
+
+      const text = await file.text();
+      const catNames = text.split('\n');
+      const index = Math.floor(Math.random() * catNames.length);
+      const catName = catNames[index];
       return new Response(
         `
         <!DOCTYPE html>
@@ -16,7 +22,12 @@ Bun.serve({
             </head>
             <body>
               <button onclick="onClick()">generate</button>
-              <script src="client.js"></script>
+              <script>
+                function onClick() {
+                  const {catName} = ${JSON.stringify({ catName })};
+                  document.body.innerText = catName;
+                }
+              </script>
             </body>
           </html>
 `,
